@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="*"
+    android:layout_weight="150"
+    tools:context="calculator.niaz.com.calculator.Main">
+
+    <TableLayout
+        android:layout_weight="70">
+        <TableRow
+            android:weightSum="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:gravity="left">
+            <TextView
+                style="@style/TextTheme"
+                android:layout_weight="1"
+                android:id="@+id/textBox"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:maxLines="2"
+                />
+
+        </TableRow>
+    </TableLayout>
+
+    <TableRow
+        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="20"
+        android:weightSum="5">
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btn7"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/btn7"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btn8"
+            android:layout_weight="1"
+            android:text="@string/btn8"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btn9"
+            android:layout_weight="1"
+            android:text="@string/btn9"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btnPlus"
+            android:layout_weight="1"
+            android:text="@string/btnPlus"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btnM"
+            android:layout_weight="1"
+            android:text="@string/btnM"
+            android:layout_height="fill_parent"
+            />
+    </TableRow>
+    <TableRow
+        android:layout_weight="20"
+        android:layout_width="match_parent"
+
+        >
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btn4"
+            android:layout_weight="1"
+            android:text="@string/btn4"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btn5"
+            android:layout_weight="1"
+            android:text="@string/btn5"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btn6"
+            android:layout_weight="1"
+            android:text="@string/btn6"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btnMinus"
+            android:layout_weight="1"
+            android:text="@string/btnMinus"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btnMPlus"
+            android:layout_weight="1"
+            android:text="@string/btnMemPlus"
+            android:layout_height="fill_parent"
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_weight="20"
+        >
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btn1"
+            android:layout_weight="1"
+            android:text="@string/btn1"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btn2"
+            android:layout_weight="1"
+            android:text="@string/btn2"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btn3"
+            android:layout_weight="1"
+            android:text="@string/btn3"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btnMultiply"
+            android:layout_weight="1"
+            android:text="@string/btnMultiply"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btnMemMinus"
+            android:layout_weight="1"
+            android:text="@string/btnMemMinus"
+            android:layout_height="fill_parent"
+            />
+    </TableRow>
+    <TableRow
+        android:layout_weight="20">
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btnDot"
+            android:layout_weight="1"
+            android:text="@string/btnDot"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btn0"
+            android:layout_weight="1"
+            android:text="@string/btn0"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btnEqual"
+            android:layout_weight="1"
+            android:text="@string/btnEqual"
+            android:layout_height="fill_parent"
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btnDivide"
+            android:layout_weight="1"
+            android:text="@string/btnDivide"
+            android:layout_height="fill_parent"
+
+            />
+
+        <Button
+            style="@style/BtnTheme"
+            android:id="@+id/btnDel"
+            android:layout_weight="1"
+            android:text="@string/btnDel"
+            android:layout_height="fill_parent"
+            android:textSize="20sp"
+            />
+    </TableRow>
+
+</TableLayout>
+
