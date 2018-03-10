@@ -27,6 +27,9 @@
     <string name="btnDel">←</string>
 
 
+    <string name="btnAC">AC</string>
+    <string name="btnHistory">History</string>
+
     <string name="btnTextSize">20sp</string>
 
 </resources>

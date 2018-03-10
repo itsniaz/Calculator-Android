@@ -1,6 +1,8 @@
 package calculator.niaz.com.calculator;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,13 +19,18 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
       Expression e1;
       StringBuilder sb;
       String result;
-      Context ct = getBaseContext();
+      SharedPreferences sharedPreferences;
+      SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         initButtons();
         actionListenerForDigits();
+
+        sharedPreferences = this.getSharedPreferences("history",MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 
     @Override
@@ -31,6 +38,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
     {
         String previousText = this.textBox.getText().toString();
         Button btnPressed = (Button) v;
+        String btnText = btnPressed.getText().toString();
 
         if(v.getId() == R.id.btnEqual)
         {
@@ -48,8 +56,14 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
 
             }
             result = getExpressionResultMx(previousText);
+           
+            if(!result.equals("NaN"))
+            {
+                String hist = previousText + " = " + result + "\n\n";
+                appendHistoryData(hist);
+                this.textBox.setText(result);
+            }
 
-            this.textBox.setText(result);
         }
         else if(v.getId() == R.id.btnDot)
         {
@@ -68,10 +82,76 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                 this.textBox.setText(sb.toString());
             }
         }
-        else
 
+        else if(HelperClass.isDigit(btnPressed) == true)
         {
-            this.textBox.setText(previousText+btnPressed.getText());
+            this.textBox.setText(previousText+btnText);
+        }
+
+        //Operations of Operators
+        else if(v.getId() == R.id.btnPlus)
+        {
+            char previousChar = previousText.charAt(previousText.length()-1);
+            if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
+            {
+                StringBuilder sb = new StringBuilder(previousText);
+                sb.deleteCharAt(sb.length()-1);
+                this.textBox.setText(sb.toString()+'+');
+            }
+            else
+            {
+                this.textBox.setText(previousText+'+');
+            }
+        }
+        else if(v.getId() == R.id.btnMinus)
+        {
+            char previousChar = previousText.charAt(previousText.length()-1);
+            if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
+            {
+                StringBuilder sb = new StringBuilder(previousText);
+                sb.deleteCharAt(sb.length()-1);
+                this.textBox.setText(sb.toString()+'-');
+            }
+            else
+            {
+                this.textBox.setText(previousText+'-');
+            }
+        }
+        else if(v.getId() == R.id.btnMultiply)
+        {
+            char previousChar = previousText.charAt(previousText.length()-1);
+            if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
+            {
+                StringBuilder sb = new StringBuilder(previousText);
+                sb.deleteCharAt(sb.length()-1);
+                this.textBox.setText(sb.toString()+"*");
+            }
+            else
+            {
+                this.textBox.setText(previousText+'*');
+            }
+        }
+        else if(v.getId() == R.id.btnDivide)
+        {
+            HelperClass.showToast(this,Character.toString(previousText.charAt(previousText.length()-1)));
+            char previousChar = previousText.charAt(previousText.length()-1);
+            if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
+            {
+                StringBuilder sb = new StringBuilder(previousText);
+                sb.deleteCharAt(sb.length()-1);
+                this.textBox.setText(sb.toString()+'÷');
+            }
+            else
+            {
+                this.textBox.setText(previousText+'÷');
+            }
+        }
+        else if(v.getId() == R.id.btnHistory)
+        {
+            Intent history = new Intent(getBaseContext(),History.class);
+            history.putExtra("history",getHistoryData());
+//            HelperClass.showToast(this,"HIstory");
+            startActivity(history);
 
         }
     }
@@ -126,6 +206,29 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
 //        }
 
         return String.valueOf(expressionResult);
+    }
+
+
+
+    //History
+
+    public  boolean setHistoryData(String data)
+    {
+
+        editor.putString("hist",data);
+        editor.apply();
+
+        return true;
+    }
+    public  String getHistoryData()
+    {
+        return sharedPreferences.getString("hist",null);
+    }
+    public boolean appendHistoryData(String data)
+    {
+        editor.putString("hist",getHistoryData() == null ? "" : getHistoryData()+data);
+        editor.apply();
+        return true;
     }
 
 

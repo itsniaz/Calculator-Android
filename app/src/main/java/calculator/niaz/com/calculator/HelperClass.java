@@ -1,9 +1,13 @@
 package calculator.niaz.com.calculator;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.mariuszgromada.math.mxparser.Expression;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by Niaz on 3/9/2018.
@@ -93,5 +97,23 @@ public class HelperClass {
 
         return new Expression(raw);
     }
+
+    public static boolean isDigit(Button btn)
+    {
+        String[] digits = {"0","1","2","3","4","5","6","7","8","9"};
+
+
+        for (String digit: digits)
+        {
+            if(digit.equals(btn.getText().toString()))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
 
 }
