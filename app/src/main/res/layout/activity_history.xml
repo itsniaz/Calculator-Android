@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_weight="150"
     android:orientation="horizontal"
-    android:stretchColumns="*"
-    tools:context="calculator.niaz.com.calculator.Main">
+    android:stretchColumns="*">
 
-    <TextView
-        style="@style/TextTheme"
-        android:id="@+id/editText3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine" />
-</ScrollView>
+    <TableRow android:layout_weight="140"
+        android:layout_height="fill_parent"
+        >
+        <ScrollView>
+        <TextView
+            android:id="@+id/textViewHist"
+            style="@style/TextTheme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        </ScrollView>
+    </TableRow>
+
+    <TableRow
+        android:layout_weight="10"
+        >
+
+        <Button
+            android:id="@+id/btnClear"
+            style="@style/BtnTheme"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Clear" />
+    </TableRow>
+
+
+</TableLayout>

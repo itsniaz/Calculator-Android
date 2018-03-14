@@ -21,7 +21,8 @@
     <string name="btnMultiply">*</string>
     <string name="btnDivide">÷</string>
 
-    <string name="btnM">M</string>
+    <string name="btnMR">MR</string>
+    <string name="btnMC">MC</string>
     <string name="btnMemPlus">M+</string>
     <string name="btnMemMinus">M-</string>
     <string name="btnDel">←</string>

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import org.mariuszgromada.math.mxparser.Expression;
 
 public class Main extends Activity implements View.OnClickListener{
-      Button btn[] = new Button[20];
+      Button btn[] = new Button[23];
       TextView textBox;
       Expression e1;
       StringBuilder sb;
@@ -170,15 +170,19 @@ public class Main extends Activity implements View.OnClickListener{
         {
             Intent history = new Intent(getBaseContext(),History.class);
             history.putExtra("history",getHistoryData());
-//            HelperClass.showToast(this,"HIstory");
             startActivity(history);
 
+        }
+
+        else if(v.getId() == R.id.btnAC)
+        {
+            this.textBox.setText("");
         }
     }
 
     public  void initButtons()
     {
-
+        textBox = findViewById(R.id.textBox);
         btn[0] = findViewById(R.id.btn0);
         btn[1] = findViewById(R.id.btn1);
         btn[2] = findViewById(R.id.btn2);
@@ -189,7 +193,7 @@ public class Main extends Activity implements View.OnClickListener{
         btn[7] = findViewById(R.id.btn7);
         btn[8] = findViewById(R.id.btn8);
         btn[9] = findViewById(R.id.btn9);
-        textBox = findViewById(R.id.textBox);
+
 
         btn[10] = findViewById(R.id.btnEqual);
         btn[11] = findViewById(R.id.btnDot);
@@ -199,10 +203,13 @@ public class Main extends Activity implements View.OnClickListener{
         btn[14] = findViewById(R.id.btnMultiply);
         btn[15] = findViewById(R.id.btnDivide);
 
-        btn[16] = findViewById(R.id.btnMPlus);
-        btn[17] = findViewById(R.id.btnMinus);
-        btn[18] = findViewById(R.id.btnM);
-        btn[19] = findViewById(R.id.btnDel);
+        btn[16] = findViewById(R.id.btnMemPlus);
+        btn[17] = findViewById(R.id.btnMemMinus);
+        btn[18] = findViewById(R.id.btnMR);
+        btn[19] = findViewById(R.id.btnMC);
+        btn[20] = findViewById(R.id.btnDel);
+        btn[21] = findViewById(R.id.btnHistory);
+        btn[22] = findViewById(R.id.btnAC);
     }
 
     public  void actionListenerForDigits()

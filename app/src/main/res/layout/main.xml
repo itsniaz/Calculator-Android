@@ -63,11 +63,11 @@
             android:text="@string/btnPlus" />
 
         <Button
-            android:id="@+id/btnM"
+            android:id="@+id/btnMC"
             style="@style/BtnTheme"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="@string/btnM" />
+            android:text="@string/btnMC" />
     </TableRow>
 
     <TableRow
@@ -105,11 +105,11 @@
             android:text="@string/btnMinus" />
 
         <Button
-            android:id="@+id/btnMPlus"
+            android:id="@+id/btnMR"
             style="@style/BtnTheme"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="@string/btnMemPlus" />
+            android:text="@string/btnMR" />
     </TableRow>
 
     <TableRow android:layout_weight="20">
@@ -143,11 +143,11 @@
             android:text="@string/btnMultiply" />
 
         <Button
-            android:id="@+id/btnMemMinus"
+            android:id="@+id/btnMemPlus"
             style="@style/BtnTheme"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="@string/btnMemMinus" />
+            android:text="@string/btnMemPlus" />
     </TableRow>
 
     <TableRow android:layout_weight="20">
@@ -179,16 +179,17 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="@string/btnDivide"
-
             />
-
         <Button
-            android:id="@+id/btnDel"
+            android:id="@+id/btnMemMinus"
             style="@style/BtnTheme"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="@string/btnDel"
-            android:textSize="20sp" />
+            android:text="@string/btnMemMinus"
+            />
+
+
+
     </TableRow>
 
     <TableRow android:layout_weight="20">
@@ -198,9 +199,8 @@
             style="@style/BtnTheme"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:elevation="0dp"
             android:text="@string/btnHistory"
-            android:onClick="onClick"
+
             />
 
         <Button
@@ -209,6 +209,13 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="@string/btnAC" />
+        <Button
+            android:id="@+id/btnDel"
+            style="@style/BtnTheme"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/btnDel"
+            android:textSize="20sp" />
     </TableRow>
 
 </TableLayout>

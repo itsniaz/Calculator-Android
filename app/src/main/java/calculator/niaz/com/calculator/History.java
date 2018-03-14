@@ -13,10 +13,8 @@ public class History extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        ht = (TextView) findViewById(R.id.editText3);
+        ht = (TextView) findViewById(R.id.textViewHist);
 
-
-//        ht.setText("Test String\n Another String \n Third String");
         showData();
     }
 

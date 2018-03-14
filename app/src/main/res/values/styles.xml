@@ -20,7 +20,6 @@
         <item name="android:textColor">@color/colorTextBox</item>
         <item name="android:layout_marginTop">10px</item>
         <item name="android:layout_marginLeft">10px</item>
-
     </style>
 
 </resources>
