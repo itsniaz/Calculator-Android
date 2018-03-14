@@ -31,7 +31,6 @@ public class History extends Activity implements View.OnClickListener
 
     public  void  showPrefData()
     {
-
       ht.setText(getFileData());
 
     }
@@ -39,7 +38,7 @@ public class History extends Activity implements View.OnClickListener
     @Override
     public  void onClick(View v)
     {
-        ;
+
 
         try
         {

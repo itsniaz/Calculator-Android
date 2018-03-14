@@ -191,6 +191,66 @@ public class Main extends Activity implements View.OnClickListener{
         {
             this.textBox.setText("");
         }
+
+        else if(v.getId() == R.id.btnMC)
+        {
+            setMemory(null);
+        }
+
+        else if(v.getId() == R.id.btnMR)
+        {
+            if(!(getMemory() == null))
+            {
+                textBox.setText(previousText+getMemory());
+            }
+        }
+
+        else if(v.getId() == R.id.btnMemPlus)
+        {
+            try
+            {
+                if(getMemory() == null)
+                {
+
+                    if(!HelperClass.containsOperator(previousText))
+                    {
+                        setMemory(previousText);
+                    }
+                }
+                else
+                {
+                    HelperClass.showToast(this,getMemory() +"+"+ previousText);
+                    String mem = getExpressionResultMx(getMemory() +"+"+ previousText);
+                    setMemory(mem);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+        else if(v.getId() == R.id.btnMemMinus)
+        {
+            try
+            {
+                if(getMemory().equals("0"))
+                {
+                    if(!HelperClass.containsOperator(previousText))
+                    {
+                        setMemory(previousText);
+                    }
+                }
+                else
+                {
+                    String mem = getExpressionResultMx(getMemory() +"-"+previousText);
+                    setMemory(mem);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
     }
 
     public  void initButtons()
@@ -245,14 +305,15 @@ public class Main extends Activity implements View.OnClickListener{
 //            return String.valueOf(d);
 //        }
 
-        return String.valueOf(expressionResult);
+        String result = String.valueOf(expressionResult);
+        return result.equals("NaN")?expr:result;
     }
 
 
 
     //History
 
-    private   boolean setHistoryData(String data)
+    private   boolean setMemory(String data)
     {
 
         editor.putString("hist",data);
@@ -260,13 +321,13 @@ public class Main extends Activity implements View.OnClickListener{
 
         return true;
     }
-    public  String getHistoryData()
+    public  String getMemory()
     {
-        return sharedPreferences.getString("hist",null);
+        return sharedPreferences.getString("hist", null);
     }
     public boolean appendHistoryData(String data)
     {
-        editor.putString("hist",getHistoryData() == null ? "" : getHistoryData()+data);
+        editor.putString("hist",getMemory() == null ? "0" : getMemory()+data);
         editor.commit();
         return true;
     }

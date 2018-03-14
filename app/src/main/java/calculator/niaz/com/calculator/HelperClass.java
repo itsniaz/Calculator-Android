@@ -114,6 +114,11 @@ public class HelperClass {
         return false;
     }
 
+    public  static boolean containsOperator(String expr)
+    {
+        return expr.contains("+") || expr.contains("-") || expr.contains("*") || expr.contains("÷");
+    }
+
 
 
 }
