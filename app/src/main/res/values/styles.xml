@@ -17,9 +17,19 @@
     <style name="TextTheme">
         <item name="android:textSize">40sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorTextBox</item>
-        <item name="android:layout_marginTop">10px</item>
-        <item name="android:layout_marginLeft">10px</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <!--<item name="android:background">@color/white</item>-->
+        <item name="android:gravity">right</item>
     </style>
-
+    <style name="TextThemeHistory">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <!--<item name="android:background">@color/white</item>-->
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
 </resources>

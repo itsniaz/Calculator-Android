@@ -12,7 +12,7 @@
         <ScrollView>
         <TextView
             android:id="@+id/textViewHist"
-            style="@style/TextTheme"
+            style="@style/TextThemeHistory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"

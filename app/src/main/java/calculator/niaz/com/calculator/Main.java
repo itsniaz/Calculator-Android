@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,23 +47,42 @@ public class Main extends Activity implements View.OnClickListener{
         String previousText = this.textBox.getText().toString();
         Button btnPressed = (Button) v;
         String btnText = btnPressed.getText().toString();
-
+        int previousTextLength;
         if(v.getId() == R.id.btnEqual)
         {
-            if(previousText == "")
+            try
+            {
+                previousTextLength = previousText.length()-1;
+                if(previousText == "")
+                {
+
+                }
+                else if(previousText.charAt(previousTextLength) == '.')
+                {
+                    previousText = previousText+'0';
+
+                }
+                else if(previousText.equals(".") || previousText.equals("0") || previousText.equals("-"))
+                {
+
+                }
+            }
+            catch (Exception e)
             {
 
             }
-            else if(previousText.charAt(previousText.length()-1) == '.')
+
+
+
+            try
             {
-                previousText = previousText+'0';
-//                HelperClass.showToast(this,previousText);
+                result = getExpressionResultMx(previousText);
             }
-            else if(previousText.equals(".") || previousText.equals("0") || previousText.equals("-"))
+
+            catch (Exception e)
             {
 
             }
-            result = getExpressionResultMx(previousText);
 
             if(!result.equals("NaN"))
             {
@@ -219,7 +239,6 @@ public class Main extends Activity implements View.OnClickListener{
                 }
                 else
                 {
-                    HelperClass.showToast(this,getMemory() +"+"+ previousText);
                     String mem = getExpressionResultMx(getMemory() +"+"+ previousText);
                     setMemory(mem);
                 }

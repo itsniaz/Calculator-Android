@@ -6,4 +6,6 @@
     <color name="colorBtnBg">#263238</color>
     <color name="colorBtnText">#ffffff</color>
     <color name="colorTextBox">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 </resources>

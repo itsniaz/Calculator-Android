@@ -22,6 +22,8 @@ public class History extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+        setTitle("History");
+
 
         ht = (TextView) findViewById(R.id.textViewHist);
         clearBtn = (Button) findViewById(R.id.btnClear);
@@ -44,7 +46,10 @@ public class History extends Activity implements View.OnClickListener
         {
             File dir = getFilesDir();
             File file = new File(dir, "history.txt");
-            boolean deleted = file.delete();
+            if(file.delete())
+            {
+                HelperClass.showToast(this,"History Cleared !");
+            }
         }
 
         catch (Exception e)
