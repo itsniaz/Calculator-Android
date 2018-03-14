@@ -76,6 +76,7 @@ public class Main extends Activity implements View.OnClickListener{
 
             try
             {
+
                 result = getExpressionResultMx(previousText);
             }
 
@@ -92,7 +93,10 @@ public class Main extends Activity implements View.OnClickListener{
                 this.textBox.setText(result);
 
                 //Saving to Internal Storage
-                appendFileData(hist);
+                if(!previousText.trim().equals(""))
+                {
+                    appendFileData(hist);
+                }
             }
 
         }
