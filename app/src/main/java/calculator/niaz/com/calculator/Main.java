@@ -88,59 +88,82 @@ public class Main extends Activity implements View.OnClickListener{
         //Operations of Operators
         else if(v.getId() == R.id.btnPlus)
         {
-            char previousChar = previousText.charAt(previousText.length()-1);
-            if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
-            {
-                StringBuilder sb = new StringBuilder(previousText);
-                sb.deleteCharAt(sb.length()-1);
-                this.textBox.setText(sb.toString()+'+');
+            try{
+                char previousChar = previousText.charAt(previousText.length()-1);
+                if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
+                {
+                    StringBuilder sb = new StringBuilder(previousText);
+                    sb.deleteCharAt(sb.length()-1);
+                    this.textBox.setText(sb.toString()+'+');
+                }
+                else
+                {
+                    this.textBox.setText(previousText+'+');
+                }
             }
-            else
+            catch(Exception e)
             {
-                this.textBox.setText(previousText+'+');
+
             }
         }
         else if(v.getId() == R.id.btnMinus)
         {
-            char previousChar = previousText.charAt(previousText.length()-1);
-            if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
-            {
-                StringBuilder sb = new StringBuilder(previousText);
-                sb.deleteCharAt(sb.length()-1);
-                this.textBox.setText(sb.toString()+'-');
+            try{
+                char previousChar = previousText.charAt(previousText.length()-1);
+                if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
+                {
+                    StringBuilder sb = new StringBuilder(previousText);
+                    sb.deleteCharAt(sb.length()-1);
+                    this.textBox.setText(sb.toString()+'-');
+                }
+                else
+                {
+                    this.textBox.setText(previousText+'-');
+                }
             }
-            else
+            catch(Exception e)
             {
                 this.textBox.setText(previousText+'-');
             }
         }
         else if(v.getId() == R.id.btnMultiply)
         {
+            try{
             char previousChar = previousText.charAt(previousText.length()-1);
             if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
             {
                 StringBuilder sb = new StringBuilder(previousText);
                 sb.deleteCharAt(sb.length()-1);
-                this.textBox.setText(sb.toString()+"*");
+                this.textBox.setText(sb.toString()+'*');
             }
             else
             {
                 this.textBox.setText(previousText+'*');
             }
+          }
+            catch(Exception e)
+            {
+
+            }
         }
         else if(v.getId() == R.id.btnDivide)
         {
-            HelperClass.showToast(this,Character.toString(previousText.charAt(previousText.length()-1)));
-            char previousChar = previousText.charAt(previousText.length()-1);
-            if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
-            {
-                StringBuilder sb = new StringBuilder(previousText);
-                sb.deleteCharAt(sb.length()-1);
-                this.textBox.setText(sb.toString()+'÷');
+            try{
+                char previousChar = previousText.charAt(previousText.length()-1);
+                if(previousChar == '+' || previousChar == '-' || previousChar == '*' || previousChar == '÷')
+                {
+                    StringBuilder sb = new StringBuilder(previousText);
+                    sb.deleteCharAt(sb.length()-1);
+                    this.textBox.setText(sb.toString()+'÷');
+                }
+                else
+                {
+                    this.textBox.setText(previousText+'÷');
+                }
             }
-            else
+            catch(Exception e)
             {
-                this.textBox.setText(previousText+'÷');
+
             }
         }
         else if(v.getId() == R.id.btnHistory)
@@ -213,7 +236,7 @@ public class Main extends Activity implements View.OnClickListener{
     {
 
         editor.putString("hist",data);
-        editor.apply();
+        editor.commit();
 
         return true;
     }
@@ -224,7 +247,7 @@ public class Main extends Activity implements View.OnClickListener{
     public boolean appendHistoryData(String data)
     {
         editor.putString("hist",getHistoryData() == null ? "" : getHistoryData()+data);
-        editor.apply();
+        editor.commit();
         return true;
     }
 
