@@ -7,8 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.mariuszgromada.math.mxparser.Expression;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class Main extends Activity implements View.OnClickListener{
       Button btn[] = new Button[23];
@@ -18,7 +28,7 @@ public class Main extends Activity implements View.OnClickListener{
       String result;
       SharedPreferences sharedPreferences;
       SharedPreferences.Editor editor;
-
+    static final int READ_BLOCK_SIZE = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +67,12 @@ public class Main extends Activity implements View.OnClickListener{
             if(!result.equals("NaN"))
             {
                 String hist = previousText + " = " + result + "\n\n";
-                appendHistoryData(hist);
+                //Saving to prefrence
+//                appendHistoryData(hist);
                 this.textBox.setText(result);
+
+                //Saving to Internal Storage
+                appendFileData(hist);
             }
 
         }
@@ -169,7 +183,6 @@ public class Main extends Activity implements View.OnClickListener{
         else if(v.getId() == R.id.btnHistory)
         {
             Intent history = new Intent(getBaseContext(),History.class);
-            history.putExtra("history",getHistoryData());
             startActivity(history);
 
         }
@@ -239,7 +252,7 @@ public class Main extends Activity implements View.OnClickListener{
 
     //History
 
-    public  boolean setHistoryData(String data)
+    private   boolean setHistoryData(String data)
     {
 
         editor.putString("hist",data);
@@ -258,5 +271,54 @@ public class Main extends Activity implements View.OnClickListener{
         return true;
     }
 
+    //
 
+    private  void setFileData(String text)
+    {
+
+        try {
+            FileOutputStream fileout = openFileOutput("history.txt", MODE_PRIVATE);
+            OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+            outputWriter.write(text);
+            outputWriter.close();
+
+        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+        } catch (IOException e) {
+//            e.printStackTrace();
+        }
+
+
+    }
+
+    private  String getFileData()
+    {
+        String s="";
+        try {
+            FileInputStream fileIn=openFileInput("history.txt");
+            InputStreamReader InputRead= new InputStreamReader(fileIn);
+
+            char[] inputBuffer= new char[READ_BLOCK_SIZE];
+            int charRead;
+
+            while ((charRead=InputRead.read(inputBuffer))>0) {
+                // char to string conversion
+                String readstring=String.copyValueOf(inputBuffer,0,charRead);
+                s +=readstring;
+            }
+            InputRead.close();
+
+
+
+        } catch (Exception e) {
+
+        }
+
+        return  s;
+    }
+
+    private void appendFileData(String text)
+    {
+        setFileData(getFileData()+text);
+    }
 }
